@@ -76,7 +76,7 @@ func (c *conf) setKafkaPort() {
 }
 
 func (c *conf) setVendorAPIHost() {
-	vendorAPIHost := c.hocon.GetString("vendorAPI.host")
+	vendorAPIHost := c.hocon.GetString("vendor-api.host")
 	if len(vendorAPIHost) == 0 {
 		log.Panic("vendor api host environment variable not found")
 	}
@@ -85,7 +85,7 @@ func (c *conf) setVendorAPIHost() {
 }
 
 func (c *conf) setVendorAPIPort() {
-	vendorAPIPort := c.hocon.GetString("vendorAPI.port")
+	vendorAPIPort := c.hocon.GetString("vendor-api.port")
 	if len(vendorAPIPort) == 0 {
 		log.Panic("vendor api port environment variable not found")
 	}
