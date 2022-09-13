@@ -64,9 +64,9 @@ func (e *EventHandler) reportDeliveries() {
 		switch ev := e.(type) {
 		case *kafka.Message:
 			if ev.TopicPartition.Error != nil {
-				fmt.Printf("Delivery failed: %v\n", ev.TopicPartition)
+				fmt.Printf("delivery failed: %v\n", ev.TopicPartition)
 			} else {
-				fmt.Printf("Delivered message to %v\n", ev.TopicPartition)
+				fmt.Printf("delivered message to %v\n", ev.TopicPartition)
 			}
 		}
 	}
@@ -86,11 +86,11 @@ func (e *EventHandler) Consume(topics []string, callback func(kafka.Message)) {
 	for {
 		msg, err := e.consumer.ReadMessage(-1)
 		if err == nil {
-			fmt.Printf("Message on %s: %s\n", msg.TopicPartition, string(msg.Value))
+			fmt.Printf("message on %s: %s\n", msg.TopicPartition, string(msg.Value))
 			callback(*msg)
 		} else {
 			// The client will automatically try to recover from all errors.
-			fmt.Printf("Consumer error: %v (%v)\n", err, msg)
+			fmt.Printf("consumer error: %v (%v)\n", err, msg)
 		}
 	}
 }
